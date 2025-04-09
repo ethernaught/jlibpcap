@@ -1,9 +1,11 @@
 package net.ethernaught.packet.layers.ethernet_frame;
 
+import net.ethernaught.packet.layers.ethernet_frame.arp.ArpExtension;
 import net.ethernaught.packet.layers.ethernet_frame.inter.EthernetAddress;
 import net.ethernaught.packet.layers.ethernet_frame.inter.EthernetTypes;
 import net.ethernaught.packet.layers.inter.Layer;
 import net.ethernaught.packet.layers.ip.IPv4Layer;
+import net.ethernaught.packet.layers.ip.IPv6Layer;
 
 import java.lang.reflect.MalformedParametersException;
 import java.nio.ByteBuffer;
@@ -41,11 +43,11 @@ public class EthernetFrame implements Layer {
                 break;
 
             case ARP:
-                //data = new ArpExtension(buf);
+                data = new ArpExtension(buf);
                 break;
 
             case IPV6:
-                //data = new Ipv6Layer(buf);
+                data = new IPv6Layer(buf);
                 break;
 
             case BROADCAST:
