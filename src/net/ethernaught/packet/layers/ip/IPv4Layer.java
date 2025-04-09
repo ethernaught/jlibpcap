@@ -6,6 +6,8 @@ import java.nio.ByteBuffer;
 
 public class IPv4Layer implements Layer {
 
+    public static final int IPV4_HEADER_LEN = 20;
+
     public IPv4Layer(){
 
     }

@@ -6,6 +6,8 @@ import java.nio.ByteBuffer;
 
 public class IPv6Layer implements Layer {
 
+    public static final int IPV6_HEADER_LEN = 40;
+
     public IPv6Layer(){
 
     }

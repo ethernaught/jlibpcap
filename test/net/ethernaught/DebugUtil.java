@@ -75,6 +75,11 @@ public class DebugUtil {
         sb.append(clazz.getSimpleName()).append(" {\n");
         for (Field field : clazz.getDeclaredFields()) {
             field.setAccessible(true);
+
+            if (Modifier.isStatic(field.getModifiers())) {
+                continue;
+            }
+
             try {
                 Object value = field.get(obj);
                 sb.append("  ".repeat(indent + 1))

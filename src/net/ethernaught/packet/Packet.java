@@ -62,11 +62,11 @@ public class Packet {
         return new byte[0];
     }
 
-    public long getLength(){
+    public int getLength(){
         return length;
     }
 
-    public long computeLength(){
+    public int computeLength(){
         return 0;
     }
 }
