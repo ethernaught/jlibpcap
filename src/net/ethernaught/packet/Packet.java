@@ -14,7 +14,7 @@ public class Packet {
     public Packet(DataLinkTypes dataLinkType, long frameTime, byte[] data){
         switch(dataLinkType){
             case EN10MB:
-                frame = new EthernetFrame(data);
+                //frame = new EthernetFrame(data);
                 break;
 
             case LOOP:
@@ -65,6 +65,6 @@ public class Packet {
     }
 
     public long computeLength(){
-
+        return 0;
     }
 }
