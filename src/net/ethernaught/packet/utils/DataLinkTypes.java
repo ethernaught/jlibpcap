@@ -1,4 +1,4 @@
-package net.ethernaught.utils;
+package net.ethernaught.packet.utils;
 
 public enum DataLinkTypes {
 

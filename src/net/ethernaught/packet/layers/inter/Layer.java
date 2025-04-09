@@ -1,4 +1,4 @@
-package net.ethernaught.inter;
+package net.ethernaught.packet.layers.inter;
 
 public interface Layer {
 

@@ -1,7 +1,8 @@
-package net.ethernaught;
+package net.ethernaught.packet;
 
-import net.ethernaught.inter.Layer;
-import net.ethernaught.utils.DataLinkTypes;
+import net.ethernaught.packet.layers.ethernet_frame.EthernetFrame;
+import net.ethernaught.packet.layers.inter.Layer;
+import net.ethernaught.packet.utils.DataLinkTypes;
 
 public class Packet {
 
