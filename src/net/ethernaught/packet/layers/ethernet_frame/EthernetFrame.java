@@ -3,8 +3,10 @@ package net.ethernaught.packet.layers.ethernet_frame;
 import net.ethernaught.packet.layers.ethernet_frame.inter.EthernetAddress;
 import net.ethernaught.packet.layers.ethernet_frame.inter.EthernetTypes;
 import net.ethernaught.packet.layers.inter.Layer;
+import net.ethernaught.packet.layers.ip.IPv4Layer;
 
 import java.lang.reflect.MalformedParametersException;
+import java.nio.ByteBuffer;
 
 public class EthernetFrame implements Layer {
 
@@ -22,19 +24,20 @@ public class EthernetFrame implements Layer {
         this.length = ETHERNET_FRAME_LEN;
     }
 
-    public EthernetFrame(byte[] buf){
-        if(buf.length < ETHERNET_FRAME_LEN){
+    public EthernetFrame(ByteBuffer buf){
+        if(buf.remaining() < ETHERNET_FRAME_LEN){
             throw new MalformedParametersException("Buffer is not long enough to be ethernet frame.");
         }
 
-        destinationMac = new EthernetAddress(buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);
-        sourceMac = new EthernetAddress(buf[6], buf[7], buf[8], buf[9], buf[10], buf[11]);
-        type = EthernetTypes.fromCode(((buf[12] & 0xFF) << 8) | (buf[13] & 0xFF));
-        length = buf.length;
+        destinationMac = new EthernetAddress(buf.get(0), buf.get(1), buf.get(2), buf.get(3), buf.get(4), buf.get(5));
+        sourceMac = new EthernetAddress(buf.get(6), buf.get(7), buf.get(8), buf.get(9), buf.get(10), buf.get(11));
+        type = EthernetTypes.fromCode(((buf.get(12) & 0xFF) << 8) | (buf.get(13) & 0xFF));
+        length = buf.remaining();
+        buf.position(ETHERNET_FRAME_LEN);
 
         switch(type){
             case IPV4:
-                //data = new Ipv4Layer(buf);
+                data = new IPv4Layer(buf);
                 break;
 
             case ARP:
@@ -96,12 +99,12 @@ public class EthernetFrame implements Layer {
     }
 
     @Override
-    public long length(){
+    public int length(){
         return length;
     }
 
     @Override
-    public long computeLength(){
+    public int computeLength(){
         return 0;
     }
 }

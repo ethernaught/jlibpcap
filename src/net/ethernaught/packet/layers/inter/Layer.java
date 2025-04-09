@@ -4,7 +4,7 @@ public interface Layer {
 
     byte[] getBytes();
 
-    long length();
+    int length();
 
-    long computeLength();
+    int computeLength();
 }
