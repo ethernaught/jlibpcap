@@ -67,6 +67,105 @@ public class IPv4Layer implements Layer {
         }
     }
 
+    public void setVersion(IPVersions version){
+        this.version = version;
+    }
+
+    public IPVersions getVersion(){
+        return version;
+    }
+
+    public void setIhl(byte ihl){
+        this.ihl = ihl;
+    }
+
+    public byte getIhl(){
+        return ihl;
+    }
+
+    public void setTos(byte tos){
+        this.tos = tos;
+    }
+
+    public byte getTos(){
+        return tos;
+    }
+
+    public int getTotalLength(){
+        return totalLength;
+    }
+
+    public void setIdentification(int identification){
+        this.identification = identification;
+    }
+
+    public int getIdentification(){
+        return identification;
+    }
+
+    public void setFlags(byte flags){
+        this.flags = flags;
+    }
+
+    public byte getFlags(){
+        return flags;
+    }
+
+    public void setFragmentOffset(int fragmentOffset){
+        this.fragmentOffset = fragmentOffset;
+    }
+
+    public int getFragmentOffset(){
+        return fragmentOffset;
+    }
+
+    public void setTtl(byte ttl){
+        this.ttl = ttl;
+    }
+
+    public byte getTtl(){
+        return ttl;
+    }
+
+    public void setProtocol(IPProtocols protocol){
+        this.protocol = protocol;
+    }
+
+    public IPProtocols getProtocol(){
+        return protocol;
+    }
+
+    //CALC AND COMPUTE CHECKSUM AND VALIDATE
+
+
+    public int getChecksum(){
+        return checksum;
+    }
+
+    public void setSourceAddress(Inet4Address sourceAddress){
+        this.sourceAddress = sourceAddress;
+    }
+
+    public Inet4Address getSourceAddress(){
+        return sourceAddress;
+    }
+
+    public void setDestinationAddress(Inet4Address destinationAddress){
+        this.destinationAddress = destinationAddress;
+    }
+
+    public Inet4Address getDestinationAddress(){
+        return destinationAddress;
+    }
+
+    public void setData(Layer data){
+        this.data = data;
+    }
+
+    public Layer getData(){
+        return data;
+    }
+
     @Override
     public byte[] getBytes(){
         return new byte[0];
